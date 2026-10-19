@@ -1,0 +1,37 @@
+Slip 1
+ Q1.
+import pandas as pd
+data = {    
+ 'Name': ['Amit', 'Priya', 'Rahul', 'Sneha', 'Neha', 'Ravi', 'Pooja', 'Karan'],    
+ 'Department': ['IT', 'HR', 'Sales',
+ 'IT', 'Finance', 'HR', 'Sales', 'IT'],     
+'Designation': ['Developer', 'Manager', 'Executive', 'Analyst', 'Accountant', 'Recruiter', 'Manager', 'Tester'],    
+ 'Salary': [40000, 50000, 30000, 45000, 35000, 32000, 48000, 38000]
+ }
+ df = pd.DataFrame(data)
+ print(df.head(5))
+ 
+Q2
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder 
+data = {     
+'Name': ['Smaran', 'Sachin', 'Samarpan', 'Spandan', 'Shravan'],     
+'Address': ['Pune', 'Mumbai', 'Delhi', 'Chennai', 'Madurai'],     
+'Age': [20, 23, 19, 21, 22],    
+ 'Class': ['BE', 'BSc(CS)', 'BVoC', 'BCom', 'BSc'] 
+}
+ 
+df = pd.DataFrame(data) df.to_csv('StudentData.csv', index=False) 
+df = pd.read_csv('StudentData.csv')
+print("Original Dataset:")
+print(df) 
+
+df = pd.get_dummies(df, columns=['Name'], dtype=int) 
+print("\nAfter One-Hot Encoding:")
+print(df) 
+ 
+le = LabelEncoder()
+ df['Class'] = le.fit_transform(df['Class'])
+ print("\nAfter Label Encoding:") 
+print(df) 
+df.to_csv('StudentData_Encoded.csv', index=False) 
